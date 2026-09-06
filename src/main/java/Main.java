@@ -12,6 +12,7 @@ import javafx.scene.layout.Region;
 
 public class Main extends Application {
 
+    private Duke duke = new Duke();
     private ScrollPane scrollPane;
     private VBox dialogContainer;
     private TextField userInput;
@@ -30,6 +31,12 @@ public class Main extends Application {
 
         userInput = new TextField();
         sendButton = new Button("Send");
+        sendButton.setOnMouseClicked((event) -> {
+            handleUserInput();
+        });
+        userInput.setOnAction((event) -> {
+            handleUserInput();
+        });
 
         DialogBox dialogBox = new DialogBox("Hello!", userImage);
         dialogContainer.getChildren().addAll(dialogBox);
@@ -71,5 +78,15 @@ public class Main extends Application {
         AnchorPane.setBottomAnchor(userInput, 1.0);
 
         //More code to be added here later
+    }
+
+    private void handleUserInput() {
+        String userText = userInput.getText();
+        String dukeText = duke.getResponse(userInput.getText());
+        dialogContainer.getChildren().addAll(
+                DialogBox.getUserDialog(userText, userImage),
+                DialogBox.getDukeDialog(dukeText, dukeImage)
+        );
+        userInput.clear();
     }
 }

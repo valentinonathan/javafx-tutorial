@@ -1,10 +1,10 @@
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.stage.Stage;
 
 public class Duke {
     public static void main(String[] args) {
-        Application.launch(Main.class, args);
+        System.out.println("Hello!");
+    }
+    public String getResponse(String input) {
+        return "Duke heard: " + input;
     }
 }
